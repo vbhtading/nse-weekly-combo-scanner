@@ -1,0 +1,33 @@
+name: Assemble page.tsx
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'build-parts/page/**'
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble and commit app/page.tsx
+        run: |
+          set -euo pipefail
+          cat build-parts/page/*.b64 | tr -d '\n' | base64 -d > app/page.tsx
+          python3 - <<'PY'
+          from pathlib import Path
+          t = Path('app/page.tsx').read_text()
+          assert len(t) == 36831, len(t)
+          assert t.startswith('"use client"')
+          print('ok', len(t), len(t.encode()))
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/page.tsx
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Replace stub page.tsx with full scanner dashboard"
+            git push
+          fi
