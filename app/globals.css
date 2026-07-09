@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --bg: #070b14;
+  --bg-elev: #0d1424;
+  --bg-card: #0f172a;
+  --border: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #22d3ee;
+  --accent-2: #a78bfa;
+  --positive: #34d399;
+  --negative: #f87171;
+  --warning: #fbbf24;
+  --bb: #38bdf8;
+  --rsi: #c084fc;
+  --macd: #f472b6;
+  --vol: #fbbf24;
+}
+
+body {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  border-color: #334155;
+  box-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.5);
+}
+
+.metric {
+  font-variant-numeric: tabular-nums;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  text-transform: uppercase;
+}
+
+.badge-bb {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.badge-rsi {
+  background: rgba(192, 132, 252, 0.15);
+  color: #d8b4fe;
+  border: 1px solid rgba(192, 132, 252, 0.35);
+}
+
+.badge-macd {
+  background: rgba(244, 114, 182, 0.15);
+  color: #f9a8d4;
+  border: 1px solid rgba(244, 114, 182, 0.35);
+}
+
+.badge-vol {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fcd34d;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+}
+
+.badge-ema {
+  background: rgba(52, 211, 153, 0.15);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+}
+
+.badge-move {
+  background: rgba(251, 146, 60, 0.15);
+  color: #fdba74;
+  border: 1px solid rgba(251, 146, 60, 0.35);
+}
+
+.badge-range {
+  background: rgba(129, 140, 248, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(129, 140, 248, 0.35);
+}
+
+.badge-triple {
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0.2),
+    rgba(192, 132, 252, 0.2),
+    rgba(244, 114, 182, 0.2)
+  );
+  color: #f0f9ff;
+  border: 1px solid rgba(167, 139, 250, 0.5);
+}
+
+.badge-green {
+  background: rgba(52, 211, 153, 0.12);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.badge-gray {
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+}
+
+.progress {
+  height: 6px;
+  background: #1e293b;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #22d3ee, #a78bfa);
+  transition: width 300ms ease;
+}
+
+.tab-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: #e2e8f0;
+  background: #111827;
+}
+
+.tab-btn.active {
+  color: #f0f9ff;
+  background: #111827;
+  border-color: #334155;
+  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.15);
+}
+
+.data-table tr {
+  border-bottom: 1px solid #1e293b;
+  transition: background 0.1s ease;
+}
+
+.data-table tr:hover {
+  background: #111827;
+}
+
+.table-header {
+  background: #0b1220;
+  font-weight: 600;
+  color: #cbd5e1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+input[type="range"] {
+  accent-color: #22d3ee;
+}
+
+input[type="text"],
+input[type="number"] {
+  background: #0b1220;
+  border: 1px solid #1e293b;
+  color: #e2e8f0;
+  border-radius: 10px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1220;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Hero glow */
+.hero-glow {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(34, 211, 238, 0.12), transparent),
+    radial-gradient(ellipse 50% 40% at 90% 10%, rgba(167, 139, 250, 0.08), transparent);
+}
